@@ -106,7 +106,7 @@ document.onkeyup = function (event) {
         }
 
     }
-    ////////////////////// WHAT SHOULD I INPUT TO MAKE COMPARISON CORRECT?
+    
     if (letters.indexOf(event.key) === -1 && abc.indexOf(event.key) > -1) {
         wrongGuess()
     }
@@ -152,15 +152,34 @@ document.onkeyup = function (event) {
         game();
     }
 
+    function winReplace(){
+        var img = document.getElementById("replace");
+        img.setAttribute("src", "assets/images/" + city + ".jpg");
+        var westimg = doument.getElementById("currentWord");
+        westimg.textContent = city;
+        
+    }
+    
+    
+    
     function win() {
         wins++;
         resetGame();
+        winReplace();
+
+        
+        
     }
 
     document.getElementById("currentWord").innerHTML = empty.join("");
     if (empty.indexOf('_ ') === -1) {
         win()
+        
     }
+
+  
+
+    
     document.getElementById("lettersAlreadyGuessed").innerHTML = emptyGuessed.join("  ");
     document.getElementById("guessRemaining").innerHTML = attempt;
     document.getElementById("loses").innerHTML = lose;
